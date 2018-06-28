@@ -2,7 +2,7 @@ const db = require('../dao/init-firebase').db;
 var express = require('express')
 var router = express.Router()
 const snapshotToArray = require('../utils').snapshotToArray
-
+var Post = require('../dao/posts')
 router.get('/list', (req, res) => {
     // const skip = req.param('skip', 0);
     return db.ref('users').limitToFirst(10).once("value", function (snapshot) {
