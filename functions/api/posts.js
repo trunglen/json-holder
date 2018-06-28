@@ -5,16 +5,17 @@ const snapshotToArray = require('../utils').snapshotToArray
 var Post = require('../dao/posts')
 router.get('/list', (req, res) => {
     // const skip = req.param('skip', 0);
-    return db.ref('users').limitToFirst(10).once("value", function (snapshot) {
-        return res.send(snapshotToArray(snapshot))
+    db.ref('posts').limitToFirst(10).once("value", function (snapshot) {
+        res.send(snapshotToArray(snapshot))
     });
 });
 
 router.post('/create', (req, res) => {
-    new Post(req.body).create().catch(err => {
-        return res.send(400, err)
+    new Post(req.body).create().then(success => {
+        res.send({ status: 'success' });
+    }).catch(err => {
+        res.status(400).send({ error: err })
     })
-    return res.send({ status: 'success' });
 });
 
 module.exports = router;

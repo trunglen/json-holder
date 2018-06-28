@@ -15,9 +15,9 @@ class User {
     if (!this.full_name) {
       return Promise.reject('full_name must be not empty');
     }
-    var newUserKey = db.ref().child('users').push().key;
+    // var newUserKey = db.ref().child('users').push().key;
     var updates = {};
-    updates['/users/' + newUserKey] = this;
+    updates['/users/' + this.user_name] = this;
     // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
     return db.ref().update(updates)
   }

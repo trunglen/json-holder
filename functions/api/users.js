@@ -10,10 +10,12 @@ router.get('/list', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    return new User(req).create().catch(err => {
-        res.send(400, { error: err });
+    return new User(req.body).create().then(success => {
+        res.send({ status: 'success' });
+    }).catch(err => {
+        console.log(err);
+        res.status(400).send({ error: err });
     })
-    return res.send({ status: 'success' });
 });
 
 module.exports = router
