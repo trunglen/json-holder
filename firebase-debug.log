@@ -1,0 +1,199 @@
+[debug] [2018-06-28T11:11:09.660Z] ----------------------------------------------------------------------
+[debug] [2018-06-28T11:11:09.663Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\TrungLen\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-06-28T11:11:09.663Z] CLI Version:   3.18.4
+[debug] [2018-06-28T11:11:09.663Z] Platform:      win32
+[debug] [2018-06-28T11:11:09.663Z] Node Version:  v8.11.1
+[debug] [2018-06-28T11:11:09.663Z] Time:          Thu Jun 28 2018 18:11:09 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:09.664Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-28T11:11:09.675Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-28T11:11:09.675Z] > authorizing via signed-in user
+[debug] [2018-06-28T11:11:09.677Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/opencoder-89f02  
+  
+ Thu Jun 28 2018 18:11:09 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:10.797Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:10.798Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/opencoder-89f02/tokens  
+  
+ Thu Jun 28 2018 18:11:10 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:11.615Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'opencoder-89f02'...
+[info] 
+[info] i  deploying database, functions
+[info] i  database: checking rules syntax...
+[debug] [2018-06-28T11:11:15.869Z] >>> HTTP REQUEST PUT https://opencoder-89f02.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": false,
+    ".write": false
+  }
+}
+ 
+ Thu Jun 28 2018 18:11:15 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:16.685Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database opencoder-89f02 is valid
+[debug] [2018-06-28T11:11:16.689Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-validation": "^1.0.2",
+    "firebase": "^5.1.0",
+    "firebase-admin": "~5.12.0",
+    "firebase-functions": "^1.0.1",
+    "joi": "^13.4.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-06-28T11:11:16.691Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/opencoder-89f02?view=CONSUMER_VIEW  
+  
+ Thu Jun 28 2018 18:11:16 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:16.692Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/opencoder-89f02?view=CONSUMER_VIEW  
+  
+ Thu Jun 28 2018 18:11:16 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:18.568Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:18.618Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-06-28T11:11:18.621Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/opencoder-89f02  
+  
+ Thu Jun 28 2018 18:11:18 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:20.028Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:20.029Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/790139128867:getServerAppConfig  
+  
+ Thu Jun 28 2018 18:11:20 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:20.684Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-06-28T11:11:20.687Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/opencoder-89f02/configs  
+  
+ Thu Jun 28 2018 18:11:20 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:21.143Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (51.66 KB) for uploading
+[debug] [2018-06-28T11:11:22.012Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/opencoder-89f02/locations/us-central1/functions:generateUploadUrl  
+  
+ Thu Jun 28 2018 18:11:22 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:22.839Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:22.840Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-32aec00a-110d-44d2-9ff7-0a25fd6d6761/84b47348-e609-4a82-a0aa-2213a3c366ff.zip?GoogleAccessId=service-790139128867@gcf-admin-robot.iam.gserviceaccount.com&Expires=1530186082&Signature=KnXAq1aD2Cbm%2F%2BesM0%2FhM8BvZxZyp5%2B4uGaE0DXMTreQA2V3w%2BspCDLQUP479gpJoOIkcmZpOuQTDfopJyXajkcFpUv%2B5pANjwbrrbVJMSUU3xxp1qqXNeLG%2FG8nNlhpkxXOixi539UhTCk4MIf5ncMoeVDgLzGcWRnDGTcjIjgiHFCmLml8sONTofSeSSCz%2BI4%2FMBdbHJqMe7JQ7brh9oIULh%2BrGcb%2BmvlKkSWxRbwobZm6OY44Y4Vk8cFgZ6nBl75ULHm0%2B8%2Bamcd1cpFacO5AbttuzY1bc0N%2FDGxz%2FfQhqseRD6gDF5pE7JT0piRaLwV9b8X3788Yq%2FcQ7NYauQ%3D%3D  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 52900,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: true,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: 'C:\\Users\\TrungLen\\AppData\\Local\\Temp\\firebase-functions-8236YAHDeqIJUujr.zip',
+  fd: 5,
+  flags: 'r',
+  mode: 438,
+  start: 0,
+  end: Infinity,
+  autoClose: true,
+  pos: 131072,
+  bytesRead: 52900 } 
+ Thu Jun 28 2018 18:11:22 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:23.536Z] <<< HTTP RESPONSE 200
+[info] +  functions: functions folder uploaded successfully
+[info] i  database: releasing rules...
+[debug] [2018-06-28T11:11:23.539Z] >>> HTTP REQUEST PUT https://opencoder-89f02.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    ".read": false,
+    ".write": false
+  }
+}
+ 
+ Thu Jun 28 2018 18:11:23 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:24.307Z] <<< HTTP RESPONSE 200
+[info] +  database: rules for database opencoder-89f02 released successfully
+[debug] [2018-06-28T11:11:24.310Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/opencoder-89f02/locations/us-central1/functions  
+  
+ Thu Jun 28 2018 18:11:24 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:24.731Z] <<< HTTP RESPONSE 200
+[info] i  functions: updating function api...
+[debug] [2018-06-28T11:11:24.736Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2018-06-28T11:11:24.738Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/opencoder-89f02/locations/us-central1/functions/api 
+query params: {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"} 
+ { sourceUploadUrl: 'https://storage.googleapis.com/gcf-upload-us-central1-32aec00a-110d-44d2-9ff7-0a25fd6d6761/84b47348-e609-4a82-a0aa-2213a3c366ff.zip?GoogleAccessId=service-790139128867@gcf-admin-robot.iam.gserviceaccount.com&Expires=1530186082&Signature=KnXAq1aD2Cbm%2F%2BesM0%2FhM8BvZxZyp5%2B4uGaE0DXMTreQA2V3w%2BspCDLQUP479gpJoOIkcmZpOuQTDfopJyXajkcFpUv%2B5pANjwbrrbVJMSUU3xxp1qqXNeLG%2FG8nNlhpkxXOixi539UhTCk4MIf5ncMoeVDgLzGcWRnDGTcjIjgiHFCmLml8sONTofSeSSCz%2BI4%2FMBdbHJqMe7JQ7brh9oIULh%2BrGcb%2BmvlKkSWxRbwobZm6OY44Y4Vk8cFgZ6nBl75ULHm0%2B8%2Bamcd1cpFacO5AbttuzY1bc0N%2FDGxz%2FfQhqseRD6gDF5pE7JT0piRaLwV9b8X3788Yq%2FcQ7NYauQ%3D%3D',
+  name: 'projects/opencoder-89f02/locations/us-central1/functions/api',
+  labels: { 'deployment-tool': 'cli-firebase' },
+  httpsTrigger: {} } 
+ Thu Jun 28 2018 18:11:24 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:25.544Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:25.548Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/opencoder-89f02/locations/us-central1/functions  
+  
+ Thu Jun 28 2018 18:11:25 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:26.284Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:26.287Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:26 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:26.995Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:28.997Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:28 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:29.671Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:31.672Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:31 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:32.355Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:34.355Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:34 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:35.070Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:37.072Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:37 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:37.464Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:39.465Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:39 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:40.158Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:42.158Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:42 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:42.862Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:44.864Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:44 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:45.264Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:47.264Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:47 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:47.956Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-28T11:11:49.957Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3BlbmNvZGVyLTg5ZjAyL3VzLWNlbnRyYWwxL2FwaS9xVExkYWUzU1Nsdw  
+  
+ Thu Jun 28 2018 18:11:49 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-06-28T11:11:50.696Z] <<< HTTP RESPONSE 200
+[info] +  functions[api]: Successful update operation. 
+[debug] [2018-06-28T11:11:50.713Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/opencoder-89f02/releases  
+  
+ Thu Jun 28 2018 18:11:50 GMT+0700 (SE Asia Standard Time)
