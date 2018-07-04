@@ -6,7 +6,7 @@ var Post = require('../dao/posts')
 router.get('/list', (req, res) => {
     // const skip = req.param('skip', 0);
     db.ref('posts').limitToFirst(10).once("value", function (snapshot) {
-        res.send(snapshotToArray(snapshot))
+        res.send(snapshotToArray(snapshot, true))
     });
 });
 

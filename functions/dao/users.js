@@ -8,18 +8,33 @@ class User {
     this.full_name = body.full_name;
   }
 
-  create(user) {
+  validate() {
     if (!this.user_name) {
       return Promise.reject('user_name must be not empty');
     }
     if (!this.full_name) {
       return Promise.reject('full_name must be not empty');
     }
+    return Promise.resolve('valid')
+  }
+  create(user) {
+    return this.validate().then(res => {
+      return new Promise((resolve, reject) => {
+        userRef.child(this.user_name).once('value', snapshot => {
+          if (snapshot.exists()) {
+            reject('author exists!')
+          } else {
+            var updates = {};
+            updates['/users/' + this.user_name] = this;
+            resolve(updates)
+          }
+        })
+      }).then(updates=>{
+        return db.ref().update(updates)
+      })
+    })
     // var newUserKey = db.ref().child('users').push().key;
-    var updates = {};
-    updates['/users/' + this.user_name] = this;
     // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-    return db.ref().update(updates)
   }
 
   lits() {

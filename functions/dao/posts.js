@@ -18,19 +18,8 @@ class Post {
     }
     return Promise.resolve('is valid');
   }
+  
   create() {
-    // return this.validateUser().then(res => {
-    //   db.ref('users').child(this.author).once('value', snapshot => {
-    //     if (snapshot.exists()) {
-    //       var newPostKey = db.ref().child('posts').push().key;
-    //       var updates = {};
-    //       updates['/posts/' + newPostKey] = this;
-    //       return db.ref().update(updates);
-    //     }
-    //     console.log('chuwa co ');
-    //     return Promise.reject('author not exists');
-    //   })
-    // });
     return this.validateUser().then(res=>{
       return new Promise((resolve, reject) => {
         db.ref('users').child(this.author).once('value', snapshot => {

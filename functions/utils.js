@@ -2,12 +2,13 @@ module.exports = {
     snapshotToArray: snapshotToArray,
 }
 
-function snapshotToArray(snapshot) {
+function snapshotToArray(snapshot, genKey) {
     var returnArr = [];
     snapshot.forEach(function (childSnapshot) {
         var item = childSnapshot.val();
-        item.key = childSnapshot.key;
-        console.log(item.key);
+        if (genKey) {
+            item.id = childSnapshot.key;
+        }
         returnArr.push(item);
     });
     return returnArr;

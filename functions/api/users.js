@@ -5,11 +5,12 @@ const db = require('../dao/init-firebase').db;
 var User = require('../dao/users')
 router.get('/list', (req, res) => {
     return db.ref('users').once("value", function (snapshot) {
-        return res.send(snapshotToArray(snapshot))
+        return res.send(snapshotToArray(snapshot, false))
     });
 });
 
 router.post('/create', (req, res) => {
+    console.log(req.body)
     return new User(req.body).create().then(success => {
         res.send({ status: 'success' });
     }).catch(err => {
