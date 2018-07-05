@@ -6,11 +6,29 @@ var Fanpage = require('../dao/fanpage')
 var common = require('../common/constant')
 const request = require('request')
 
-router.get('/list', (req, res) => {
-    // const skip = req.param('skip', 0);
-    db.ref('fanpages').limitToFirst(10).once("value", function (snapshot) {
-        res.send(snapshotToArray(snapshot, true))
-    });
+//web scraper
+const rp = require('request-promise');
+const cheerio = require('cheerio');
+var DomParser = require('dom-parser');
+var parser = new DomParser();
+
+router.get('/lookup', (req, res) => {
+    const fanpageUrl = req.query.fanpage_url;
+    console.log(req.query)
+    const options = {
+        uri: fanpageUrl,
+        transform: function (body) {
+            return cheerio.load(body);
+        },
+
+    };
+    request.get('http://www.facebook.com/phukien1121/', (er, response, html) => {
+        html = html + ''
+        console.log(html.substring(0,10000))
+        console.log(html.match(/meta property="al:android:url".*refer/gi));
+        console.log(/content="fb:\/\/page\/[0-9]+/g.exec(html));
+    })
+    res.send(200, { status: 'ok' })
 });
 
 router.post('/create', (req, res) => {
@@ -25,17 +43,17 @@ router.post('/create', (req, res) => {
         }
         response = JSON.parse(response.body)
         response.data.forEach(element => {
-            requestComment(fanpageID, element.id)
+            requestComment(fanpageID, element.id, token)
         });
         if (response.paging.next) {
-            requestNextPost(fanpageID, response.paging.next)
+            requestNextPost(fanpageID, response.paging.next, token)
         }
     })
-    res.send({status:'success'})
+    res.send({ status: 'success' })
 
 });
 
-function requestNextPost(fanpageID, next) {
+function requestNextPost(fanpageID, next, token) {
     request.get(next, (err, response) => {
         if (response.statusCode !== 200) {
             console.log(err)
@@ -43,14 +61,12 @@ function requestNextPost(fanpageID, next) {
         }
         response = JSON.parse(response.body)
         response.data.forEach(element => {
-            console.log(element.id);
             requestComment(fanpageID, element.id)
         });
     })
 }
 
-function requestComment(fanpageID, postID) {
-    const token = 'EAAAAUaZA8jlABAB5t11JZCZBeZALZAkhF1aOGZA6QOdbAGLRlbqBP1BN5nI3xu95g1baMgccpMvQaSwGUBfZCTPuSJnGzQ5l0UAjyaK81J2VTmseN8zLbPP0NalKbGR3kVTj4fuYbrZAMoZB96NqopeGPBLbC5Rp0ZAkIZD'
+function requestComment(fanpageID, postID, token) {
     request.get(common.getRequestUrl(postID + '/comments?access_token=' + token, { qs: { access_token: token } }), (err, response) => {
         if (response.statusCode !== 200) {
             console.log(err, 'error')
@@ -66,12 +82,14 @@ function requestComment(fanpageID, postID) {
             if (phone || email) {
                 comment += element.message + '&&&'
                 element.from.phone = phone
-                element.from.phone = email
+                element.from.email = email
                 element.from.message = element.message
                 from.push(element.from)
             }
         });
-        new Fanpage(fanpageID, postID, getPhoneFromComment(comment), getEmailFromComment(comment), comment, from).create()
+        if (from.length != 0) {
+            new Fanpage(fanpageID, postID, getPhoneFromComment(comment), getEmailFromComment(comment), comment, from).create()
+        }
     })
 }
 
