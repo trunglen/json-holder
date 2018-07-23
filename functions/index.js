@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const functions = require('firebase-functions');
 var userApi = require('./api/users')
+var linkApi = require('./api/123links')
 var postApi = require('./api/posts')
 var tokenApi = require('./api/tokens')
 var fanpageApi = require('./api/fanpages')
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true }));
 app.use('/users', userApi);
+app.use('/link', linkApi);
 app.use('/posts', postApi);
 app.use('/tokens', tokenApi);
 app.use('/fanpages', fanpageApi);

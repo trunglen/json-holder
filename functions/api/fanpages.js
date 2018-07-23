@@ -7,10 +7,6 @@ var common = require('../common/constant')
 const request = require('request')
 
 //web scraper
-const rp = require('request-promise');
-const cheerio = require('cheerio');
-var DomParser = require('dom-parser');
-var parser = new DomParser();
 
 router.get('/lookup', (req, res) => {
     const fanpageUrl = req.query.fanpage_url;
